@@ -1,0 +1,24 @@
+336CA Zamfirescu Radu Ioan
+
+Am creat cate 3 clase pentru fiecare etapa: un task, un worker si un rezultat.
+Pentru a nu instantia multe obiecte atat pentru inputul workerilor, cat si
+pentru variabilele de retur, ceea ce ar fi folosit mai mult cod si mai multa
+memorie, chiar si viteza un pic scazuta, am folosit referinte catre array-uri
+in care fiecare thread isi prelua datele necesare in functie de id-ul lui si
+isi completa partea sa.
+
+Workerii map vor primi si genera rezultate pentru fiecare task de tip map
+creat.
+Workerii reduce vor primi si genera rezultate pentru fiecare document.
+
+La metoda findRightStop din MapWorker nu am pus conditia: right < 2 * D,
+pentru ca daca ar aparea astfel de situatii nu ar mai avea sens impartirea pe
+taskuri a documentelor, fiindca un singur task ar face treaba initial
+distribuita pentru altele care vor ramane instantiate degeaba. Deci se
+presupune ca nu sunt date teste in care sa apara astfel de cazuri. (aici nu ma
+refer la taskurile care se ocupa de sfarsitul unui document si pot sa nu mai
+prelucreze nimic din cauza ca se poate sa le ramana un numar mic de caractere
+ce pot fi distribuite taskului anterior pentru ultimul cuvant)
+
+Ca problema intalnita: nu imi reinitializam bufferul pentru citirea din
+fisier cu 0 la fiecare iteratie (MapWorker.run).
