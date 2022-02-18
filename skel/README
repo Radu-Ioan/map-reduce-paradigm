@@ -1,4 +1,3 @@
-336CA Zamfirescu Radu Ioan
 
 Am creat cate 3 clase pentru fiecare etapa: un task, un worker si un rezultat.
 Pentru a nu instantia multe obiecte atat pentru inputul workerilor, cat si
@@ -20,5 +19,3 @@ refer la taskurile care se ocupa de sfarsitul unui document si pot sa nu mai
 prelucreze nimic din cauza ca se poate sa le ramana un numar mic de caractere
 ce pot fi distribuite taskului anterior pentru ultimul cuvant)
 
-Ca problema intalnita: nu imi reinitializam bufferul pentru citirea din
-fisier cu 0 la fiecare iteratie (MapWorker.run).
